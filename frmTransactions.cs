@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
@@ -8,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormRyan.Models;
 
 namespace WinFormRyan
 {
@@ -20,34 +23,48 @@ namespace WinFormRyan
 
         private void frmTransactions_Load(object sender, EventArgs e)
         {
-            BindTransactionsGrid();
+            BindAircraftGrid();
         }
 
-        private void BindTransactionsGrid(string typeFilter = null)
+        
+        private void BindAircraftGrid(IEnumerable<FilterDetails> filters = null)
         {
             var connString = Properties.Settings.Default.AircraftConnectionString;
             var sqlText = @"SELECT * From AircraftValues";
 
-            SqlParameter sqlParameter = null;
+            List<SqlParameter> paramList = new List<SqlParameter>();
 
-            if(!string.IsNullOrEmpty(typeFilter))
+            if (filters != null)
             {
-                sqlText += " WHERE [MfgOrigName] LIKE '%' + @Type + '%'";
+                var count = 0;
 
-                sqlParameter = new SqlParameter
+                foreach(var filter in filters)
                 {
-                    ParameterName = "@Type",
-                    Value = typeFilter
-                };
+                    sqlText += (count == 0) ? " WHERE" : " AND";
+                    sqlText += $" [{filter.ColumnName}] LIKE '%' + @{filter.ColumnName}Value + '%'";
+
+                    paramList.Add(
+                        new SqlParameter
+                        {
+                            ParameterName = $"@{filter.ColumnName}Value",
+                            Value = filter.FilterValue
+                        }
+                    );
+
+                    count++;
+                }
             }
 
             var conn = new SqlConnection(connString);
-            var cmd = new SqlCommand(sqlText, conn);
+            var cmd = new SqlCommand(sqlText, conn)
+            {
+                CommandType = CommandType.Text
+            };
 
-            cmd.CommandType = CommandType.Text;
-
-            if (sqlParameter != null)
-                cmd.Parameters.Add(sqlParameter);
+            foreach (var param in paramList)
+            {
+                cmd.Parameters.Add(param);
+            }
 
             var da = new SqlDataAdapter(cmd);
             var ds = new DataSet();
@@ -59,12 +76,40 @@ namespace WinFormRyan
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            BindTransactionsGrid(txtType.Text);
+            var filterList = new List<FilterDetails>();
+
+            foreach(Control control in panelFilters.Controls)
+            {
+                if(control is TextBox)
+                {
+                    if(!string.IsNullOrEmpty(control.Text))
+                    {
+                        var thisFilter = new FilterDetails 
+                        { 
+                            ColumnName = control.Tag.ToString(), 
+                            FilterValue = control.Text
+                        };
+
+                        filterList.Add(thisFilter);
+                    }
+                }
+            }
+
+            BindAircraftGrid(filterList);
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            BindTransactionsGrid();
+            foreach (Control control in panelFilters.Controls)
+            {
+                if (control is TextBox)
+                {
+                    control.Text = string.Empty;
+                }
+            }
+
+            BindAircraftGrid();
         }
+
     }
 }
