@@ -4,12 +4,12 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="TransactBitConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="TransactBitConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WinFormRyan.Properties.Settings.GlobalReference.Default.TransactBitConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="AircraftConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="AircraftConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WinFormRyan.Properties.Settings.GlobalReference.Default.AircraftConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TransactionsTableAdapter" GeneratorDataComponentClassName="TransactionsTableAdapter" Name="Transactions" UserDataComponentName="TransactionsTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="TransactBitConnectionString (Settings)" DbObjectName="TransactBit.dbo.Transactions" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="AircraftConnectionString (Settings)" DbObjectName="TransactBit.dbo.Transactions" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>INSERT INTO [Transactions] ([Time (UTC)], [Type], [Symbol], [Specification], [USD Amount], [Trading Fee (USD)], [USD Balance], [BTC Amount], [BTC Balance], [ETH Amount], [ETH Balance]) VALUES (@p1, @Type, @Symbol, @Specification, @USD_Amount, @p4, @USD_Balance, @BTC_Amount, @BTC_Balance, @ETH_Amount, @ETH_Balance)</CommandText>
@@ -50,7 +50,7 @@
               <Mapping SourceColumn="ETH Balance" DataSetColumn="ETH Balance" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="TransactBitConnectionString (Settings)" DbObjectName="TransactBit.dbo.Transactions" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByType" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByType" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByType">
+              <DbSource ConnectionRef="AircraftConnectionString (Settings)" DbObjectName="TransactBit.dbo.Transactions" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByType" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByType" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByType">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT [Time (UTC)], Type, Symbol, Specification, [USD Amount], 
@@ -74,7 +74,7 @@ WHERE [Type] = @Type</CommandText>
   <xs:element name="TransactBitDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="TransactBitDataSet" msprop:Generator_UserDSName="TransactBitDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Transactions" msprop:Generator_TableClassName="TransactionsDataTable" msprop:Generator_TableVarName="tableTransactions" msprop:Generator_TablePropName="Transactions" msprop:Generator_RowDeletingName="TransactionsRowDeleting" msprop:Generator_RowChangingName="TransactionsRowChanging" msprop:Generator_RowEvHandlerName="TransactionsRowChangeEventHandler" msprop:Generator_RowDeletedName="TransactionsRowDeleted" msprop:Generator_UserTableName="Transactions" msprop:Generator_RowChangedName="TransactionsRowChanged" msprop:Generator_RowEvArgName="TransactionsRowChangeEvent" msprop:Generator_RowClassName="TransactionsRow">
+        <xs:element name="Transactions" msprop:Generator_TableClassName="TransactionsDataTable" msprop:Generator_TableVarName="tableTransactions" msprop:Generator_RowChangedName="TransactionsRowChanged" msprop:Generator_TablePropName="Transactions" msprop:Generator_RowDeletingName="TransactionsRowDeleting" msprop:Generator_RowChangingName="TransactionsRowChanging" msprop:Generator_RowEvHandlerName="TransactionsRowChangeEventHandler" msprop:Generator_RowDeletedName="TransactionsRowDeleted" msprop:Generator_RowClassName="TransactionsRow" msprop:Generator_UserTableName="Transactions" msprop:Generator_RowEvArgName="TransactionsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Time_x0020__x0028_UTC_x0029_" msprop:Generator_ColumnVarNameInTable="_columnTime__UTC_" msprop:Generator_ColumnPropNameInRow="_Time__UTC_" msprop:Generator_ColumnPropNameInTable="_Time__UTC_Column" msprop:Generator_UserColumnName="Time (UTC)" type="xs:dateTime" minOccurs="0" />

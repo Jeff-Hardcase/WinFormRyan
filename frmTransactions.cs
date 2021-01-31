@@ -25,25 +25,14 @@ namespace WinFormRyan
 
         private void BindTransactionsGrid(string typeFilter = null)
         {
-            var connString = Properties.Settings.Default.TransactBitConnectionString;
-            var sqlText = @"SELECT [Time (UTC)]
-                          ,[Type]
-                          ,[Symbol]
-                          ,[Specification]
-                          ,[USD Amount]
-                          ,[Trading Fee (USD)]
-                          ,[USD Balance]
-                          ,[BTC Amount]
-                          ,[BTC Balance]
-                          ,[ETH Amount]
-                          ,[ETH Balance]
-                      FROM[TransactBit].[dbo].[Transactions]";
+            var connString = Properties.Settings.Default.AircraftConnectionString;
+            var sqlText = @"SELECT * From AircraftValues";
 
             SqlParameter sqlParameter = null;
 
             if(!string.IsNullOrEmpty(typeFilter))
             {
-                sqlText += " WHERE [Type] = @Type";
+                sqlText += " WHERE [MfgOrigName] LIKE '%' + @Type + '%'";
 
                 sqlParameter = new SqlParameter
                 {

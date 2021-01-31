@@ -26,10 +26,10 @@ namespace WinFormRyan.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(local);Initial Catalog=TransactBit;Integrated Security=True")]
-        public string TransactBitConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(local);Initial Catalog=Aircraft;Integrated Security=True")]
+        public string AircraftConnectionString {
             get {
-                return ((string)(this["TransactBitConnectionString"]));
+                return ((string)(this["AircraftConnectionString"]));
             }
         }
     }
