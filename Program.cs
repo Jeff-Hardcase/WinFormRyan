@@ -16,7 +16,7 @@ namespace WinFormRyan
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTransactions());
+            Application.Run(new frmAircraft());
         }
     }
 }

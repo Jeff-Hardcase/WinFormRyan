@@ -46,31 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmTransact.cs">
+    <Compile Include="frmAircraft.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTransact.Designer.cs">
-      <DependentUpon>frmTransact.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmTransactions.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTransactions.Designer.cs">
-      <DependentUpon>frmTransactions.cs</DependentUpon>
+    <Compile Include="frmAircraft.Designer.cs">
+      <DependentUpon>frmAircraft.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\FilterDetails.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TransactBitDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TransactBitDataSet.xsd</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="frmTransact.resx">
-      <DependentUpon>frmTransact.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTransactions.resx">
-      <DependentUpon>frmTransactions.cs</DependentUpon>
+    <EmbeddedResource Include="frmAircraft.resx">
+      <DependentUpon>frmAircraft.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -90,17 +76,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="TransactBitDataSet.xsc">
-      <DependentUpon>TransactBitDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="TransactBitDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TransactBitDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="TransactBitDataSet.xss">
-      <DependentUpon>TransactBitDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

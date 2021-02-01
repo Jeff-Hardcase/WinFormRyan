@@ -14,9 +14,9 @@ using WinFormRyan.Models;
 
 namespace WinFormRyan
 {
-    public partial class frmTransactions : Form
+    public partial class frmAircraft : Form
     {
-        public frmTransactions()
+        public frmAircraft()
         {
             InitializeComponent();
         }

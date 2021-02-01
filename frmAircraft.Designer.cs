@@ -1,6 +1,6 @@
 ﻿namespace WinFormRyan
 {
-    partial class frmTransactions
+    partial class frmAircraft
     {
         /// <summary>
         /// Required designer variable.
@@ -135,7 +135,7 @@
             this.txtYear.TabIndex = 2;
             this.txtYear.Tag = "Year";
             // 
-            // frmTransactions
+            // frmAircraft
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -144,7 +144,7 @@
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.dgTransactions);
-            this.Name = "frmTransactions";
+            this.Name = "frmAircraft";
             this.Text = "Aircraft Values";
             this.Load += new System.EventHandler(this.frmTransactions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgTransactions)).EndInit();
